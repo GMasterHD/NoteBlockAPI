@@ -26,6 +26,8 @@ public abstract class SongPlayer {
 	protected Song song;
 	protected Playlist playlist;
 	protected int actualSong = 0;
+	
+	protected String uuid = "";
 
 	protected boolean playing = false;
 	protected boolean fading = false;
@@ -901,5 +903,11 @@ public abstract class SongPlayer {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public String getUUID() {
+		return uuid;
+	}
+	public void setUUID(String uuid) {
+		this.uuid = uuid;
+	}
 }

@@ -3,7 +3,6 @@ package com.xxmicloxx.NoteBlockAPI;
 import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.MathUtils;
 import com.xxmicloxx.NoteBlockAPI.utils.Updater;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.HandlerList;
@@ -141,10 +140,6 @@ public class NoteBlockAPI extends JavaPlugin {
 				dependentPlugins.put(pl, false);
 			}
 		}
-		
-		Metrics metrics = new Metrics(this, 1083);
-		
-		
 		new NoteBlockPlayerMain().onEnable();
 		
 		getServer().getScheduler().runTaskLater(this, new Runnable() {
@@ -172,17 +167,6 @@ public class NoteBlockAPI extends JavaPlugin {
 
 		            }
 		        }
-		        
-		        metrics.addCustomChart(new Metrics.DrilldownPie("deprecated", () -> {
-			        Map<String, Map<String, Integer>> map = new HashMap<>();
-			        for (Plugin pl : dependentPlugins.keySet()){
-			        	String deprecated = dependentPlugins.get(pl) ? "yes" : "no";
-			        	Map<String, Integer> entry = new HashMap<>();
-				        entry.put(pl.getDescription().getFullName(), 1);
-				        map.put(deprecated, entry);
-			        }
-			        return map;
-			    }));
 			}
 		}, 1);
 		
